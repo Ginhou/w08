@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <title>Product - List</title>
+
+    <title>
+        <%= title %>
+    </title>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <script>
+        function Edit(id){
+            window.location.href = "/products/edit?id=" + id;
+        }
+
+        function Delete(id){
+            window.location.href = "/products/delete?id=" + id;
+        }
+        function Add(){
+            window.location.href = "/products/add";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class='text-center d-4'>
+            <h1>Product - List</h1>
+        </div>
+
+        <button type="button" name="add" class="btn btn-danger" value="Add" onclick="Add();">Add</button>
+
+        <table class="table table-striped">
+            <thead class="bg-info">
+                <tr>
+                    <th scope="col" class="align-middle m-2">ProductID</th>
+                    <th scope="col" class="align-middle m-2">ProductName</th>
+                    <th scope="col" class="align-middle m-2">ProductPrice</th>
+                    <th scope="col" class="align-middle m-2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for ( var i = 0 ; i < data.length ; i++){ %>
+                <tr>
+
+                    <td class="align-middle">
+                        <%= data[i].id  %>
+                    </td>
+                    <td class="align-middle">
+                        <%= data[i].name  %>
+                    </td>
+                    <td class="align-middle">
+                        <%= data[i].price  %>
+                    </td>
+                    <td class="align-middle">
+                        <button type="button" name="edit" class="btn btn-success" value="Edit" onclick="Edit('<%= data[i].id  %>');">Edit</button>
+                        <button type="button" name="delete" class="btn btn-warning" value="Del" onclick="Delete( '<%= data[i].id  %>');">Del</button>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!--
+
+    <table class="table">
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+        </tr>
+        <% for ( var i = 0 ; i < data.length ; i++){ %>
+            <tr>
+                <td>
+                    <%= data[i].id  %>
+                </td>
+                <td>
+                    <%= data[i].name  %>
+                </td>
+                <td>
+                    <%= data[i].price  %>
+                </td>
+            </tr>
+            <% } %>
+    </table>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo "
+        crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 "
+        crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy "
+        crossorigin="anonymous "></script>
+</body>
+
+</html>
